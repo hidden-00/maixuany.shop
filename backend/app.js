@@ -62,7 +62,6 @@ app.use(function (req, res, next) {
 const routes = require('./routes/index');
 // Use Routes
 app.use('/api', routes);
-app.use('/public', express.static(path.join(__dirname, 'public')));
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
