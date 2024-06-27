@@ -82,7 +82,6 @@ app.use((err, req, res, next) => {
     }
     err.method = req.method;
     err.path = req.path;
-    AddErrorToLogs(req, res, next, err);
     return otherHelper.sendResponse(res, httpStatus.INTERNAL_SERVER_ERROR, false, null, err, null, null);
   }
 });
