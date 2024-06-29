@@ -7,9 +7,7 @@ const otherHelper = require('./others.helper');
 const httpStatus = require('http-status');
 
 const maxFileSize = process.env.maxFileSize || 1000000000;
-
-const CLIENT_ID = '6d2b23112775eb5';
-const CLIENT_SECRET = '0e19833ee6026640df95f7c0fb705ffc03543271';
+const CLIENT_ID = process.env.CLIENT_ID_IMGUR;
 
 let mimeType = {
     'image/png': 'png',
@@ -65,6 +63,7 @@ const uploadToImgur = (destinationPath, dataField) => {
                         }
                     });
                     console.log(imgurResponse.data.data.link);
+                    req.body.url_image = imgurResponse.data.data.link;
                     // Xóa file temp sau khi đã upload lên Imgur
                     fs.unlinkSync(req.file.path);
                     next();
